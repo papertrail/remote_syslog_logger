@@ -20,7 +20,7 @@ module RemoteSyslogLogger
     end
     
     def transmit(message)
-      message.split("\n").each do |line|
+      message.split(/\r?\n/).each do |line|
         next if line =~ /^\s*$/
         packet = @packet.dup
         packet.content = line
