@@ -1,5 +1,5 @@
 require 'socket'
-require 'syslog_proto'
+require 'syslog_protocol'
 
 module RemoteSyslogLogger
   class UdpSender
@@ -8,7 +8,7 @@ module RemoteSyslogLogger
       @remote_port     = remote_port
       
       @socket = UDPSocket.new
-      @packet = SyslogProto::Packet.new
+      @packet = SyslogProtocol::Packet.new
 
       local_hostname   = options[:local_hostname] || (Socket.gethostname rescue `hostname`.chomp)
       local_hostname   = 'localhost' if local_hostname.nil? || local_hostname.empty?
