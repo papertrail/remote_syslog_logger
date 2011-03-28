@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'remote_syslog_logger'
   s.version           = '1.0.0'
-  s.date              = '2011-03-27'
-  # s.rubyforge_project = 'NAME'
+  s.date              = '2011-03-28'
+  # s.rubyforge_project = 'remote_syslog_logger'
 
   ## Make sure your summary is short. The description may be as long
   ## as you like.
@@ -58,7 +58,17 @@ Gem::Specification.new do |s|
   ## contents of your Git repository via the gemspec task. DO NOT REMOVE
   ## THE MANIFEST COMMENTS, they are used as delimiters by the task.
   # = MANIFEST =
-  s.files = %w[]
+  s.files = %w[
+    Gemfile
+    LICENSE
+    README.md
+    Rakefile
+    lib/remote_syslog_logger.rb
+    lib/remote_syslog_logger/udp_sender.rb
+    remote_syslog_logger.gemspec
+    test/helper.rb
+    test/test_remote_syslog_logger.rb
+  ]
   # = MANIFEST =
 
   ## Test files will be grabbed from the file list. Make sure the path glob
