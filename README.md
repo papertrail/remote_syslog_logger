@@ -16,9 +16,15 @@ The easiest way to install `remote_syslog_logger` is with RubyGems:
 # Usage
 
 
-    >> require 'remote_syslog_logger'
-    => true
-    >>
+Use from Rails:
+
+    config.logger = RemoteSyslogLogger.new('syslog.domain.com', 514, :program => "rails-#{RAILS_ENV}")
+
+
+Use from Ruby:
+
+    $logger = RemoteSyslogLogger.new('syslog.domain.com', 514)
+
 
 
 # Source
