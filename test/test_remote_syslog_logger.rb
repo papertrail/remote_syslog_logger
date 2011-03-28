@@ -12,7 +12,17 @@ class TestRemoteSyslogLogger < Test::Unit::TestCase
     @logger.info "This is a test"
     
     message, addr = *@socket.recvfrom(1024)
-    puts message
     assert_match /This is a test/, message
+  end
+
+  def test_logger_multiline
+    @logger = RemoteSyslogLogger.new('127.0.0.1', @server_port)
+    @logger.info "This is a test\nThis is the second line"
+
+    message, addr = *@socket.recvfrom(1024)
+    assert_match /This is a test/, message
+
+    message, addr = *@socket.recvfrom(1024)
+    assert_match /This is the second line/, message
   end
 end

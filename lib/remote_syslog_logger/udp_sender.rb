@@ -20,9 +20,12 @@ module RemoteSyslogLogger
     end
     
     def transmit(message)
-      packet = @packet.dup
-      packet.content = message
-      @socket.send(packet.assemble, 0, @remote_hostname, @remote_port)
+      message.split("\n").each do |line|
+        next if line =~ /^\s*$/
+        packet = @packet.dup
+        packet.content = line
+        @socket.send(packet.assemble, 0, @remote_hostname, @remote_port)
+      end
     end
     
     # Make this act a little bit like an `IO` object
