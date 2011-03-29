@@ -31,11 +31,11 @@ Use from Ruby:
 
 Remote Syslog Logger is available on GitHub, which can be browsed at:
 
-<http://github.com/eric/remote_syslog_logger>
+<http://github.com/papertrail/remote_syslog_logger>
 
 and cloned with:
 
-    $ git clone git://github.com/eric/remote_syslog_logger.git
+    $ git clone git://github.com/papertrail/remote_syslog_logger.git
 
 
 # Contributing
@@ -59,5 +59,5 @@ Copyright (c) 2011 Eric Lindvall. See [LICENSE][] for details.
 
 [cb]: https://wiki.github.com/defunkt/resque/contributing
 [fk]: http://help.github.com/forking/
-[is]: https://github.com/eric/remote_syslog_logger/issues
-[LICENSE]: https://github.com/eric/remote_syslog_logger/blob/master/LICENSE
+[is]: https://github.com/papertrail/remote_syslog_logger/issues
+[LICENSE]: https://github.com/papertrail/remote_syslog_logger/blob/master/LICENSE

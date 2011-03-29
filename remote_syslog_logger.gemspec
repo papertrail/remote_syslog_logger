@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   ## a custom homepage, consider using your GitHub URL or the like.
   s.authors  = ["Eric Lindvall"]
   s.email    = 'eric@5stops.com'
-  s.homepage = 'http://github.com/eric/remote_syslog_logger'
+  s.homepage = 'https://github.com/papertrail/remote_syslog_logger'
 
   ## This gets added to the $LOAD_PATH so that 'lib/NAME.rb' can be required as
   ## require 'NAME.rb' or'/lib/NAME/file.rb' can be as require 'NAME/file.rb'
