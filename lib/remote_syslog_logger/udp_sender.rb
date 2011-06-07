@@ -6,6 +6,7 @@ module RemoteSyslogLogger
     def initialize(remote_hostname, remote_port, options = {})
       @remote_hostname = remote_hostname
       @remote_port     = remote_port
+      @whinyerrors     = options[:whinyerrors]
       
       @socket = UDPSocket.new
       @packet = SyslogProtocol::Packet.new
@@ -21,10 +22,15 @@ module RemoteSyslogLogger
     
     def transmit(message)
       message.split(/\r?\n/).each do |line|
-        next if line =~ /^\s*$/
-        packet = @packet.dup
-        packet.content = line
-        @socket.send(packet.assemble, 0, @remote_hostname, @remote_port)
+        begin
+          next if line =~ /^\s*$/
+          packet = @packet.dup
+          packet.content = line
+          @socket.send(packet.assemble, 0, @remote_hostname, @remote_port)
+        rescue
+          $stderr.puts "#{self.class} error: #{$!.class}: #{$!}\nOriginal message: #{line}"
+          raise if @whinyerrors
+        end
       end
     end
     
