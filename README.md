@@ -8,23 +8,26 @@ directly to a remote syslogd via UDP.
 
 # Installation
 
-The easiest way to install `remote_syslog_logger` is with RubyGems:
+The easiest way to install `remote_syslog_logger` is with Bundler. Add
+`remote_syslog_logger` to your `Gemfile`.
+
+If you are not using a `Gemfile`, run:
 
     $ [sudo] gem install remote_syslog_logger
 
 
 # Usage
 
-
 Use from Rails:
 
     config.logger = RemoteSyslogLogger.new('syslog.domain.com', 514, :program => "rails-#{RAILS_ENV}")
-
 
 Use from Ruby:
 
     $logger = RemoteSyslogLogger.new('syslog.domain.com', 514)
 
+To point the logs to your local system, use `localhost` and ensure that
+the system's syslog daemon is bound to `127.0.0.1`.
 
 
 # Source
@@ -54,7 +57,7 @@ on coding standards, new features, etc.
 
 # License
 
-Copyright (c) 2011 Eric Lindvall. See [LICENSE][] for details.
+Copyright (c) 2011-2014 Eric Lindvall. See [LICENSE][] for details.
 
 
 [cb]: https://wiki.github.com/defunkt/resque/contributing
