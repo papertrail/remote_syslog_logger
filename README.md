@@ -41,6 +41,23 @@ and cloned with:
     $ git clone git://github.com/papertrail/remote_syslog_logger.git
 
 
+# Limitations
+
+If the specified host cannot be resolved, `syslog.domain.com` 
+in the example under the usage section above, `remote_syslog_logger`
+will block for approximatley 20 seconds before displaying an error. 
+This could result in the application failing to start or even stop running.
+
+Workarounds for this include:
+
+* use an IP address instead of a hostname. When logging to Papertrail, 
+this would disable any kind of redundancy that would normally be 
+achieved via round-robin DNS
+* use something like [remote_syslog](https://github.com/papertrail/remote_syslog), 
+which is an external application that can monitor log files and 
+forward them on to a syslog server
+
+
 # Contributing
 
 Once you've made your great commits:
