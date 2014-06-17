@@ -50,12 +50,12 @@ result in the application failing to start or even stopping responding.
 
 Workarounds for this include:
 
-* use an IP address instead of a hostname. When logging to Papertrail, 
-this would disable any kind of redundancy that would normally be 
-achieved via round-robin DNS
-* use something like [remote_syslog](https://github.com/papertrail/remote_syslog), 
-which is an external application that can monitor log files and 
-forward them on to a syslog server
+* use an IP address instead of a hostname.
+* put a hosts entry in `/etc/hosts` or equivalent, so that DNS is not
+actually consulted
+* instead of logging directly to the network, write to a file and
+transmit new entries with a standalone daemon like
+[remote_syslog](https://github.com/papertrail/remote_syslog),
 
 
 # Contributing
