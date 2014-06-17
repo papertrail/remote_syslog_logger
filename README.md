@@ -43,10 +43,10 @@ and cloned with:
 
 # Limitations
 
-If the specified host cannot be resolved, `syslog.domain.com` 
-in the example under the usage section above, `remote_syslog_logger`
-will block for approximatley 20 seconds before displaying an error. 
-This could result in the application failing to start or even stop running.
+If the specified host cannot be resolved, `syslog.domain.com` in the
+example under the usage section above, `remote_syslog_logger` will block
+for approximately 20 seconds before displaying an error.  This could
+result in the application failing to start or even stopping responding.
 
 Workarounds for this include:
 
