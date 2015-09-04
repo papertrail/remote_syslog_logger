@@ -57,6 +57,16 @@ actually consulted
 transmit new entries with a standalone daemon like
 [remote_syslog](https://github.com/papertrail/remote_syslog),
 
+## Message length
+
+All log lines are truncated to a maximum of 1024 characters. This restriction comes from using UDP, [RFC 3164 section 4.1][rfc-limit]:
+
+> The total length of the packet MUST be 1024 bytes or less.
+
+For more details, see this [papertrail troubleshooting article][troubleshoot].
+
+[rfc-limit]: https://tools.ietf.org/html/rfc3164#section-4.1
+[troubleshoot]: http://help.papertrailapp.com/kb/configuration/troubleshooting-remote-syslog-reachability/#message-length
 
 # Contributing
 
