@@ -1,6 +1,6 @@
 # Remote Syslog Logger
 
-This library providers an [ActiveSupport][] compatible logger that logs 
+This library providers an [ActiveSupport][] compatible logger that logs
 directly to a remote syslogd via UDP.
 
 [ActiveSupport]: http://as.rubyonrails.org/
@@ -59,13 +59,18 @@ transmit new entries with a standalone daemon like
 
 ## Message length
 
-All log lines are truncated to a maximum of 1024 characters. This restriction comes from using UDP, [RFC 3164 section 4.1][rfc-limit]:
+All log lines are truncated to a maximum of 1024 characters. This restriction
+comes from [RFC 3164 section 4.1][rfc-limit]:
 
 > The total length of the packet MUST be 1024 bytes or less.
 
-For more details, see this [papertrail troubleshooting article][troubleshoot].
+Additionally, the generally-accepted [MTU][] of the Internet is 1500 bytes, so
+regardless of the RFC, UDP syslog packets longer than 1500 bytes would not
+arrive. For details or to use TCP syslog for longer messages, see
+[help.papertrailapp.com][troubleshoot].
 
 [rfc-limit]: https://tools.ietf.org/html/rfc3164#section-4.1
+[MTU]: (https://en.wikipedia.org/wiki/Maximum_transmission_unit)
 [troubleshoot]: http://help.papertrailapp.com/kb/configuration/troubleshooting-remote-syslog-reachability/#message-length
 
 # Contributing
