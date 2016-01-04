@@ -101,7 +101,7 @@ on coding standards, new features, etc.
 
 # License
 
-Copyright (c) 2011-2014 Eric Lindvall. See [LICENSE][] for details.
+Copyright (c) 2011-2016 Eric Lindvall. See [LICENSE][] for details.
 
 
 [cb]: https://wiki.github.com/defunkt/resque/contributing
