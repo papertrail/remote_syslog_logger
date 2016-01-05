@@ -20,7 +20,19 @@ If you are not using a `Gemfile`, run:
 
 Use from Rails:
 
-    config.logger = RemoteSyslogLogger.new('syslog.domain.com', 514, :program => "rails-#{RAILS_ENV}", :local_hostname => "optional_hostname")
+    config.logger = RemoteSyslogLogger.new('syslog.domain.com', 514,
+                      :program => "rails-#{RAILS_ENV}",
+                      :local_hostname => "optional_hostname")
+
+With Rails 3+ if you want to use tagged logging wrap in a `TaggedLogging` instance:
+
+    config.logger = ActiveSupport::TaggedLogging.new(
+                      RemoteSyslogLogger.new(
+                        'syslog.domain.com', 514,
+                        :program => "rails-#{RAILS_ENV}",
+                        :local_hostname => "optional_hostname"
+                      )
+                    )
 
 Use from Ruby:
 
@@ -89,7 +101,7 @@ on coding standards, new features, etc.
 
 # License
 
-Copyright (c) 2011-2014 Eric Lindvall. See [LICENSE][] for details.
+Copyright (c) 2011-2016 Eric Lindvall. See [LICENSE][] for details.
 
 
 [cb]: https://wiki.github.com/defunkt/resque/contributing
