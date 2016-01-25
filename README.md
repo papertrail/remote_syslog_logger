@@ -85,6 +85,29 @@ arrive. For details or to use TCP syslog for longer messages, see
 [MTU]: (https://en.wikipedia.org/wiki/Maximum_transmission_unit)
 [troubleshoot]: http://help.papertrailapp.com/kb/configuration/troubleshooting-remote-syslog-reachability/#message-length
 
+
+## Default program name
+
+By default, the `program` value is set to the name and ID of the invoking
+process. For example, `puma[12345]` or `rack[3456]`.
+
+The `program` value is used to populate the syslog "tag" field, must be 32
+or fewer characters. In a few cases, an artifact of how the app is launched
+may lead to a default `program` value longer than 32 characters. For example,
+the `thin` Web server may generate a default `program` value such
+as:
+
+    thin server (0.0.0.0:3001)[11179]
+
+If this occurs, the following exception will be raised when a
+`RemoteSyslogLogger` is instantiated:
+
+    Tag must not be longer than 32 characters (ArgumentError)
+
+To remedy this, explicitly provide a `program` argument which is shorter than
+32 characters. See [Usage](#usage).
+
+
 # Contributing
 
 Once you've made your great commits:
