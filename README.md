@@ -36,6 +36,7 @@ With Rails 3+ if you want to use tagged logging wrap in a `TaggedLogging` instan
 
 Use from Ruby:
 
+    require 'remote_syslog_logger'
     $logger = RemoteSyslogLogger.new('syslog.domain.com', 514)
 
 To point the logs to your local system, use `localhost` and ensure that
