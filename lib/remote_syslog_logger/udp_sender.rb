@@ -7,6 +7,7 @@ module RemoteSyslogLogger
       @remote_hostname = remote_hostname
       @remote_port     = remote_port
       @whinyerrors     = options[:whinyerrors]
+      @maxsize         = options[:maxsize] || 30720
       
       @socket = UDPSocket.new
       @packet = SyslogProtocol::Packet.new
@@ -26,7 +27,8 @@ module RemoteSyslogLogger
           next if line =~ /^\s*$/
           packet = @packet.dup
           packet.content = line
-          @socket.send(packet.assemble, 0, @remote_hostname, @remote_port)
+          payload = packet.assemble @maxsize
+          @socket.send(payload, 0, @remote_hostname, @remote_port)
         rescue
           $stderr.puts "#{self.class} error: #{$!.class}: #{$!}\nOriginal message: #{line}"
           raise if @whinyerrors
