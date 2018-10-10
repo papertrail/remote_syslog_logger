@@ -82,6 +82,10 @@ regardless of the RFC, UDP syslog packets longer than 1500 bytes would not
 arrive. For details or to use TCP syslog for longer messages, see
 [help.papertrailapp.com][troubleshoot].
 
+There is a `max_size` option to override this restriction, but it should only be
+used in extraordinary circumstances. Oversize messages are more likely to be
+fragmented and lost, with some receivers rejecting them entirely.
+
 [rfc-limit]: https://tools.ietf.org/html/rfc3164#section-4.1
 [MTU]: (https://en.wikipedia.org/wiki/Maximum_transmission_unit)
 [troubleshoot]: http://help.papertrailapp.com/kb/configuration/troubleshooting-remote-syslog-reachability/#message-length
